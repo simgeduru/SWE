@@ -2,7 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
+@keyframes move {
+    from {
+      left:2250px;
+    }
+    to {
+      left: -200px;
+    }
+  }
+  
 
 img{
     display: block;
@@ -14,6 +24,39 @@ body{
 }
 
 header{
-    height: 90px;
-    background-color: #6c757d;
+
+    background-color: #ffffff;
+
+}
+
+#greenBar{
+  min-width: 100%;  
+    background-color: #0b8e36;  
+    color: white;
+    overflow: hidden;
+  white-space: nowrap;
+  box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.3);
+  padding: 0.3rem 0;
+}
+
+#greenBar > p{
+    position: relative;
+    display: inline-block;
+    animation: move 20s infinite linear;
+}
+#headerContent{
+    padding: 1rem 0;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#headerContent> img{
+    width: 13rem;
+  
+    height: auto;
 }
