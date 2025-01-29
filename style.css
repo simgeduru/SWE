@@ -66,8 +66,8 @@ header{
    padding: 1rem 6.5rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    gap: 4.5rem;
 }
 .navbar{
     display: flex;
@@ -77,9 +77,36 @@ header{
     letter-spacing: 1px;
     line-height: 2;
     color: black;
+   
 }
 
 #headerContent> img{
     width: 15rem;
     height: auto;
 }
+.headerRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 2rem;
+    align-items: center;
+    margin-left: 4rem;
+}
+.contactUsLogo{
+    background-color: #0b8e36;
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    color: white;
+    gap: 0.5rem;
+}
+.contactUsLogo:hover{
+    background-color: black;
+    transition: background-color 0.5s;
+}
+/* @media screen and (min-width: 1441px) {
+    #contactUsLogo{
+     display: none;
+    }
+   } */
