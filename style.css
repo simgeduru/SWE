@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+body{
+    min-width: 100vh;
+}
+
+header{
+    height: 90px;
+    background-color: #6c757d;
+}
