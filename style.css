@@ -2,8 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
 }
+.quicksand{
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+a:visited {
+    color: #0b8e36;
+  }
+  a{
+    color: black;
+  }
 @keyframes move {
     from {
       left:2250px;
@@ -36,7 +49,7 @@ header{
     overflow: hidden;
   white-space: nowrap;
   box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.3);
-  padding: 0.3rem 0;
+  padding: 0.4rem 0;
 }
 
 #greenBar > p{
@@ -44,19 +57,29 @@ header{
     display: inline-block;
     animation: move 20s infinite linear;
 }
+@media screen and (max-width: 767px) {
+   #greenBar{
+    display: none;
+   }
+  }
 #headerContent{
-    padding: 1rem 0;
+   padding: 1rem 6.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .navbar{
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
-    justify-content: center;
     align-items: center;
+    gap: 1.3rem;
+    letter-spacing: 1px;
+    line-height: 2;
+    color: black;
 }
 
 #headerContent> img{
-    width: 13rem;
-  
+    width: 15rem;
     height: auto;
 }
