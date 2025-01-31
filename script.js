@@ -40,3 +40,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const productItems = document.querySelectorAll(".product-item");
+    
+    // Default selected products
+    const defaultSelected = ["Smart Power", "Temperature"];
+    
+    productItems.forEach(item => {
+        const productName = item.querySelector("span").innerText.trim();
+        
+        if (defaultSelected.includes(productName)) {
+            item.classList.add("selected", "default-selected");
+        }
+        
+        item.addEventListener("click", () => {
+            if (!item.classList.contains("default-selected")) {
+                item.classList.toggle("selected");
+            }
+        });
+    });
+});
+
