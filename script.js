@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mouse move animasyonu (WiFi ikonu)
     document.addEventListener('mousemove', (e) => {
-        const x = e.clientX ;
-        const y = e.clientY;
+        const x = e.clientX / window.innerWidth * 30 - 15;
+        const y = e.clientY / window.innerHeight * 30 - 15;
         wifiIcon.style.transform = `translate(${x}px, ${y}px)`;
     });
 });
