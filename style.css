@@ -1,193 +1,161 @@
-/* CSS Reset ve Geliştirilmiş Varsayılanlar */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
+/* Genel Stiller */
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
   overflow-x: hidden;
-}
-
-img, picture, video, canvas, svg {
-  display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
-  font: inherit;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-
-p {
-  text-wrap: pretty;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
-}
-
-#root, #__next {
-  isolation: isolate;
-}
-
-/* Stil Tanımlamaları */
-.quicksand {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 600;
-}
-
-a {
-  color: black;
-}
-
-a:visited {
-  color: #0b8e36;
-}
-
-/* Yeşil Bar */
-#greenBar {
-  width: 100%;
+/* Üst Banner */
+.top-banner {
   background-color: #0b8e36;
   color: white;
+  padding: 10px 0;
   text-align: center;
-  padding: 0.4rem 0;
+  font-size: 16px;
+  overflow: hidden;
   white-space: nowrap;
-  box-shadow: inset 0px 5px 10px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-}
-
-#greenBar > p {
-  display: inline-block;
-  animation: move 20s infinite linear;
-}
-
-@keyframes move {
-  from {
-      transform: translateX(100%);
-  }
-  to {
-      transform: translateX(-100%);
-  }
-}
-
-/* Header */
-header {
-  background-color: #ffffff;
+  position: fixed;
   width: 100%;
-  padding: 0 4rem;
-  overflow: hidden;
+  top: 0;
+  z-index: 1001;
+}
+
+.marquee {
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
 }
 
 /* Navbar */
-nav {
-  position: relative;
-}
-
 .navbar {
   display: flex;
-  gap: 1.3rem;
-}
-
-.navbar li {
-  display: inline;
-}
-
-.navbar a {
-  letter-spacing: 1px;
-  line-height: 2;
-  white-space: nowrap;
-}
-
-/* Sağ Taraf - Search, Instagram, Contact */
-.headerRight {
-  display: flex;
+  justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+  background-color: white;
+  padding: 15px;
+  color: black;
+  position: fixed;
+  width: 100%;
+  top: 40px;
+  z-index: 1000;
+  transition: background 0.3s ease-in-out;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: nowrap;
 }
 
-.contactUsLogo {
-  background-color: #0b8e36;
-  padding: 0.8rem 2rem;
+.logo img {
+  height: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+.nav-links {
+  list-style: none;
   display: flex;
-  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  text-wrap: nowrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 15px;
   border-radius: 5px;
-  color: white;
-  gap: 0.5rem;
-  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.contactUsLogo:hover {
-  background-color: black;
-  transition: background-color 0.5s;
+.nav-links a:hover {
+  background-color: #0b8e36;
+  color: white;
+  transform: scale(1.05);
 }
 
 /* Hamburger Menü */
 .hamburger-menu {
   display: none;
   flex-direction: column;
-  gap: 5px;
   cursor: pointer;
 }
 
-.hamburger-menu span {
-  width: 30px;
-  height: 4px;
+.hamburger-menu .bar {
+  width: 50px;
+  height: 3px;
   background-color: black;
-  border-radius: 2px;
+  margin: 5px 5px;
 }
 
-/* Responsive Tasarım */
-@media screen and (max-width: 1024px) {
-  header {
-      padding: 1rem 2rem;
-  }
-
-  .navbar {
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .nav-links {
       display: none;
       flex-direction: column;
+      background-color: white;
       position: absolute;
       top: 60px;
       left: 0;
       width: 100%;
-      background-color: white;
-      padding: 1rem;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      text-align: center;
   }
-
-  .navbar.active {
+  .nav-links.active {
       display: flex;
   }
-
   .hamburger-menu {
       display: flex;
   }
+  .navbar{
+    justify-content: space-between;
+    padding: 0 2px;
+  }
 }
 
-/* Ana İçerik */
-#content {
+/* Hero Bölümü */
+.hero {
   text-align: center;
-  margin-top: 2rem;
-  padding: 2rem;
+  padding: 150px 20px 100px;
+  background: linear-gradient(to bottom, #0b8e36, #f5f5f5);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
 }
 
-.headerContent{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 4rem;
+/* CTA Butonu */
+.cta-btn {
+  background-color: white;
+  color: #0b8e36;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo{
-  min-width: 10rem;
-  width: 14rem;
+.cta-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hareket Eden WiFi İkonu */
+.wifi-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background: url('assets/favicon.ico') no-repeat center center;
+  background-size: contain;
+  transition: transform 0.01s ease-out;
 }

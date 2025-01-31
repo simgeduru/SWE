@@ -1,8 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburgerMenu = document.querySelector(".hamburger-menu");
-    const navbar = document.querySelector(".navbar");
+document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger-menu');
+    const wifiIcon = document.getElementById('wifi-icon');
 
-    hamburgerMenu.addEventListener("click", function () {
-        navbar.classList.toggle("active");
+    // Hamburger menü aç/kapat
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+
+    // CTA Butonu Click Animasyonu
+    const ctaButton = document.querySelector('.cta-btn');
+    ctaButton.addEventListener('click', () => {
+        ctaButton.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            ctaButton.style.transform = 'scale(1)';
+        }, 200);
+    });
+
+    // Mouse move animasyonu (WiFi ikonu)
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX ;
+        const y = e.clientY;
+        wifiIcon.style.transform = `translate(${x}px, ${y}px)`;
     });
 });
