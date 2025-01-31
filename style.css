@@ -1,112 +1,193 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1rem;
-    text-decoration: none;
+/* CSS Reset ve Geliştirilmiş Varsayılanlar */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-.quicksand{
-    font-family: "Quicksand", serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+
+* {
+  margin: 0;
 }
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+/* Stil Tanımlamaları */
+.quicksand {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+}
+
+a {
+  color: black;
+}
+
 a:visited {
-    color: #0b8e36;
-  }
-  a{
-    color: black;
-  }
-@keyframes move {
-    from {
-      left:2250px;
-    }
-    to {
-      left: -200px;
-    }
-  }
-  
-
-img{
-    display: block;
-    max-width: 100%;
+  color: #0b8e36;
 }
 
-body{
-    min-height: 100vh;
-}
-
-header{
-
-    background-color: #ffffff;
-
-}
-
-#greenBar{
-  min-width: 100%;  
-    background-color: #0b8e36;  
-    color: white;
-    overflow: hidden;
-  white-space: nowrap;
-  box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.3);
+/* Yeşil Bar */
+#greenBar {
+  width: 100%;
+  background-color: #0b8e36;
+  color: white;
+  text-align: center;
   padding: 0.4rem 0;
+  white-space: nowrap;
+  box-shadow: inset 0px 5px 10px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-#greenBar > p{
-    position: relative;
-    display: inline-block;
-    animation: move 20s infinite linear;
+#greenBar > p {
+  display: inline-block;
+  animation: move 20s infinite linear;
 }
-@media screen and (max-width: 767px) {
-   #greenBar{
-    display: none;
-   }
+
+@keyframes move {
+  from {
+      transform: translateX(100%);
   }
-#headerContent{
-   padding: 1rem 6.5rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4.5rem;
-}
-.navbar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.3rem;
-    letter-spacing: 1px;
-    line-height: 2;
-    color: black;
-   
+  to {
+      transform: translateX(-100%);
+  }
 }
 
-#headerContent> img{
-    width: 15rem;
-    height: auto;
+/* Header */
+header {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 0 4rem;
+  overflow: hidden;
 }
-.headerRight{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 2rem;
-    align-items: center;
-    margin-left: 4rem;
+
+/* Navbar */
+nav {
+  position: relative;
 }
-.contactUsLogo{
-    background-color: #0b8e36;
-    padding: 0.8rem 2rem;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    color: white;
-    gap: 0.5rem;
+
+.navbar {
+  display: flex;
+  gap: 1.3rem;
 }
-.contactUsLogo:hover{
-    background-color: black;
-    transition: background-color 0.5s;
+
+.navbar li {
+  display: inline;
 }
-@media screen and (min-width: 1441px) {
-    #contactUsLogo{
-   
-    }
-   }
+
+.navbar a {
+  letter-spacing: 1px;
+  line-height: 2;
+  white-space: nowrap;
+}
+
+/* Sağ Taraf - Search, Instagram, Contact */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contactUsLogo {
+  background-color: #0b8e36;
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  color: white;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.contactUsLogo:hover {
+  background-color: black;
+  transition: background-color 0.5s;
+}
+
+/* Hamburger Menü */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  width: 30px;
+  height: 4px;
+  background-color: black;
+  border-radius: 2px;
+}
+
+/* Responsive Tasarım */
+@media screen and (max-width: 1024px) {
+  header {
+      padding: 1rem 2rem;
+  }
+
+  .navbar {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 1rem;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar.active {
+      display: flex;
+  }
+
+  .hamburger-menu {
+      display: flex;
+  }
+}
+
+/* Ana İçerik */
+#content {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.headerContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+}
+
+.logo{
+  min-width: 10rem;
+  width: 14rem;
+}
