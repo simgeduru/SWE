@@ -23,4 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const y = e.clientY / window.innerHeight * 30 - 15;
         wifiIcon.style.transform = `translate(${x}px, ${y}px)`;
     });
+
+    // Sidebar ürün seçim işlemi
+    const productItems = document.querySelectorAll('.product-item');
+    const selectedProductsList = document.querySelector('.selected-products');
+    
+    productItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (!item.classList.contains('selected-item')) {
+                item.classList.add('selected-item');
+                const selectedItem = document.createElement('li');
+                selectedItem.textContent = item.textContent;
+                selectedItem.classList.add('selected-item');
+                selectedProductsList.appendChild(selectedItem);
+            }
+        });
+    });
 });
