@@ -8,21 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         menu.classList.toggle('active');
     });
 
-    // CTA Butonu Click Animasyonu
-    const ctaButton = document.querySelector('.cta-btn');
-    ctaButton.addEventListener('click', () => {
-        ctaButton.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-            ctaButton.style.transform = 'scale(1)';
-        }, 200);
-    });
-
-    // Mouse move animasyonu (WiFi ikonu)
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth * 30 - 15;
-        const y = e.clientY / window.innerHeight * 30 - 15;
-        wifiIcon.style.transform = `translate(${x}px, ${y}px)`;
-    });
 
     // Sidebar ürün seçim işlemi
     const productItems = document.querySelectorAll('.product-item');
@@ -44,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const productItems = document.querySelectorAll(".product-item");
     
-    // Default selected products
-    const defaultSelected = ["Smart Power", "Temperature"];
+    // Otomatik seçili olacak ürünler
+    const defaultSelected = ["Smart Power", "Temperature", "Gateway"];
     
     productItems.forEach(item => {
         const productName = item.querySelector("span").innerText.trim();
@@ -62,3 +47,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const productItems = document.querySelectorAll(".product-item");
+    const selectedProductsList = document.querySelector(".selected-products");
+    
+    // Otomatik olarak seçili olacak ve değiştirilemeyecek ürünler
+    const defaultSelected = ["Smart Power", "Temperature", "Gateway"];
+    const selectedProducts = {};
+
+    productItems.forEach(item => {
+        const productName = item.dataset.name;
+
+        if (defaultSelected.includes(productName)) {
+            item.classList.add("selected", "default-selected");
+            selectedProducts[productName] = 1; // Başlangıçta adet 1
+            updateSelectedProducts();
+        }
+
+        item.addEventListener("click", () => {
+            if (!item.classList.contains("default-selected")) {
+                if (selectedProducts[productName]) {
+                    delete selectedProducts[productName];
+                    item.classList.remove("selected");
+                } else {
+                    selectedProducts[productName] = 1;
+                    item.classList.add("selected");
+                }
+                updateSelectedProducts();
+            }
+        });
+    });
+
+    function updateSelectedProducts() {
+        selectedProductsList.innerHTML = "";
+
+        Object.keys(selectedProducts).forEach(product => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                <span>${product}</span>
+                <div>
+                    <button class="decrease" data-name="${product}">-</button>
+                    <span class="quantity">${selectedProducts[product]}</span>
+                    <button class="increase" data-name="${product}">+</button>
+                </div>
+            `;
+            selectedProductsList.appendChild(listItem);
+        });
+
+        document.querySelectorAll(".increase").forEach(button => {
+            button.addEventListener("click", () => {
+                const productName = button.dataset.name;
+                selectedProducts[productName]++;
+                updateSelectedProducts();
+            });
+        });
+
+        document.querySelectorAll(".decrease").forEach(button => {
+            button.addEventListener("click", () => {
+                const productName = button.dataset.name;
+                if (selectedProducts[productName] > 1) {
+                    selectedProducts[productName]--;
+                } else if (!defaultSelected.includes(productName)) {
+                    delete selectedProducts[productName];
+                    document.querySelector(`[data-name="${productName}"]`).classList.remove("selected");
+                }
+                updateSelectedProducts();
+            });
+        });
+    }
+});

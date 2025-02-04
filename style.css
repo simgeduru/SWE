@@ -172,7 +172,9 @@ body {
   overflow: hidden;
   max-width: 100%;
 }
-
+.container{
+  margin-top: 80px;
+}
 /* CTA Butonu */
 .cta-btn {
   background-color: white;
@@ -200,12 +202,7 @@ body {
   background-size: contain;
   transition: transform 0.1s ease-out;
 }
-.sidebar {
-  width: 300px;
-  background: #fff;
-  padding: 20px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .product-list {
   list-style: none;
@@ -260,3 +257,94 @@ body {
   color: white;
   pointer-events: none;
 }
+/* Sidebar'ın header altında kalmaması için */
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  width: 20%;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.simulation-container {
+  display: flex;
+  gap: 20px;
+}
+
+.simulation-area {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background-color: #ddd;
+  border: 2px solid #333;
+}
+
+.point {
+  position: absolute;
+  background: red;
+  padding: 5px;
+  color: white;
+}
+
+.transmitter { top: 10%; left: 20%; }
+.junction { top: 40%; left: 50%; }
+.control { top: 70%; left: 80%; }
+
+.distance-slider {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+.distance-controls {
+  width: 30%;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.selected-items {
+  width: 30%;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.selected-items ul {
+  list-style: none;
+  padding: 0;
+}
+
+.selected-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.selected-item span {
+  margin-right: 10px;
+}
+.product-item {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.product-item.selected {
+  background: #4CAF50;
+  color: white;
+}
+
+.selected-products li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.ItemsInter{
+  display: flex;
+
+} 
